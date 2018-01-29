@@ -1,0 +1,4 @@
+node_modules/
+public/js/dist/
+sftp-config.json
+ftp-simple-temp.json
