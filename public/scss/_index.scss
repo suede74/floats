@@ -1,0 +1,90 @@
+.index-block {
+	position: relative;
+	max-width: 1118px;
+
+	.carousel-inner {
+		max-height: 410px;
+		overflow: hidden;
+
+		.carousel-item {
+			position: absolute;
+			opacity: 0;
+			transition: all .5s;
+
+			&.active {
+				position: relative;
+				opacity: 1; 
+			}
+		}
+
+		img { width: 100%; }
+	}
+
+	.index-banner {
+		max-width: 100%;
+		object-fit: cover; 
+	}
+}
+
+.index-news-block,
+.index-pro-block {
+	li {
+		margin-bottom: 5px;
+		background-position: center;
+		background-size: cover;
+
+		@include media-breakpoint-up(md) {
+			margin: 20px 0;
+			border-left: 6px solid #fff;
+			border-right: 6px solid #fff;
+		}
+	}
+}
+
+.index-news-block {
+	margin: 20px auto 0 auto;
+
+	li {
+		//display: flex;
+		padding-top: 20px;
+		height: 90px;
+		//align-items: center; // 與 display 宣告在同一階層
+		//flex-direction: column; // 排序依據
+		//justify-content: flex-start;
+
+		h2 {
+			margin-bottom: 0;
+			color: #fff;
+			font-size: 14px;
+		}
+	}
+}
+
+.index-pro-block  {
+	text-align: center;
+
+	li { 
+		height: 150px; 
+	}
+
+	.index-pro-block__title { text-align: left; }
+
+	.index-pro-title {
+		width: 40%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, .5);
+		text-align: left;
+
+		.index-pro-title__inner {
+			position: absolute;
+			left: 15px;
+			bottom: 10px;
+		}
+		
+		h2 { 
+			margin-bottom: 0;
+			font-size: 14px;
+			color: #fff;
+		}
+	}
+}

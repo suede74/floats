@@ -1,7 +1,8 @@
-<div class="index-block container-fluid">
+<div class="index-block">
     <img class="index-banner" src="images/banner_01.jpg"></div>
     <img class="index-banner" src="'/public/upload/product/TR179-YG20B.png"></div>
 </div>
+<ol class="carousel-indicators"></ol>
 <div class="container wrapper">
     <ul class="index-news row col-md-12">
         <li class="col-md-4 col-sm-6 col-xs-12 padding-none">
