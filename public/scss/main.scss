@@ -13,10 +13,16 @@
 @import "node_modules/bootstrap/scss/transitions";
 
 // 頁面
+@import "var";
 
 ul {
     padding-left: 0;
     list-style-type: none;
+}
+
+p {
+    font-size: 14px;
+    color: $deep-gray;
 }
 
 .mx-auto {
@@ -96,7 +102,7 @@ ul {
     }
 
     .navbar-toggler-icon {
-        color: #6d6e70;
+        color: $deep-gray;
     }
 
     .main-menu {
@@ -119,6 +125,8 @@ ul {
         .nav-item {
 	        padding: 0 3rem;
 	        border-top: 2px solid #2aa0d7;
+
+	        &.show + .nav-item { border-top: none; }
 	    }
 
 		.main-menu__mobile-dropdown {
@@ -127,7 +135,7 @@ ul {
 				margin-left: -50vw;
 	    		left: 50%;
 	    		padding-left: 8%;
-	    		color: #6d6e70;
+	    		color: $deep-gray ;
 			}
 
 			&.show .main-menu__mobile-ul.dropdown-menu { display: block; }
@@ -194,4 +202,30 @@ footer {
 	line-height:28px;
 }
 
+.cate-title {
+	padding: 0.5rem 1rem;
+	background-color: #dcdedd;
+	font-size: 1rem;
+	font-weight: normal;
+	border-top: 2px solid #fff;
+	text-align: center;
+}
+
+.underline { 
+    border-bottom: 1px solid $deep-gray; 
+}
+
+.underline-md {
+    @include media-breakpoint-up(md) {
+        border-bottom: 1px solid $deep-gray; 
+    }
+}
+
+.article-title {
+    margin-top: .5rem;
+    font-size: 18px;
+    color: $deep-gray;
+}
+
 @import "index";
+@import "about";

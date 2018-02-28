@@ -76,7 +76,7 @@
         <ul class="main-menu__mobile navbar-collapse collapse navbar-nav">
             
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('about')?>">About Toe Ring</a>
+                <a class="nav-link" href="<?=base_url('about')?>">About Toe Ring - 關於腳戒</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('product/Floats! Toe Ring')?>">Floats Toe Ring</a>
