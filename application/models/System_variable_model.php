@@ -17,10 +17,6 @@ class System_variable_model extends MY_Model
         $this->db->select("*")
             ->from($this->table);
 		
-        if (isset($query['lang']) && $query['lang'] != ''){
-        	$this->db->where('au_lang', $query['lang']);
-        }
-	
         $num = $this->db->count_all_results();
 
         return $num;
@@ -37,10 +33,6 @@ class System_variable_model extends MY_Model
         $this->db->select("*")
             ->from($this->table);		
 
-    	if (isset($query['lang']) && $query['lang'] != ''){
-        	$this->db->where('au_lang', $query['lang']);
-        }
-        
         $this->db->limit($limit[1], $limit[0]);
 
         $query = $this->db->get();

@@ -16,42 +16,31 @@ $config['meta'] = array(
 );
 
 $config['menu'] = array(
-    // 'admin' => array(
-    //     'title'      => '會員中心',
-    //     'icon_class' => 'icon-home',
-    //     'item'       => array(
-    //         'info'     => array(
-    //             'title'      => '基本資料',
-    //             'icon_class' => 'icon-home',
-    //             'link'       => '/member/info',
-    //         ),
-    //         'merchant' => array(
-    //             'title'      => '商店基本資料',
-    //             'icon_class' => 'icon-home',
-    //             'link'       => '/member/merchant',
-    //         ),
-    //     ),
-    // ),
-    'admin'   => array(
+    'admin'    => array(
         'title'      => '管理者管理',
         'icon_class' => 'icon-home',
         'link'       => '/admin/admin',
     ),
-//     'aboutus' => array(
-    //             'title'      => '關於我們管理',
-    //             'icon_class' => 'icon-home',
-    //             'link'       => '/admin/aboutus',
-    //     ),        
-    //     'slide' => array(
-    //         'title'      => '首頁輪播管理',
-    //         'icon_class' => 'icon-home',
-    //         'link'       => '/admin/indexslide',
-    //     ),
-    //     'news' => array(
-    //         'title'      => '最新消息管理',
-    //         'icon_class' => 'icon-home',
-    //         'link'       => '/admin/news',
-    //     ),
+    'slide' => array(
+        'title'      => '首頁輪播管理',
+        'icon_class' => 'icon-home',
+        'link'       => '/admin/slide',
+    ),
+    'block'    => array(
+        'title'      => '首頁區塊管理',
+        'icon_class' => 'icon-home',
+        'link'       => '/admin/block',
+    ),
+    'news'     => array(
+        'title'      => '最新消息管理',
+        'icon_class' => 'icon-home',
+        'link'       => '/admin/news',
+    ),
+    'store'    => array(
+        'title'      => '商店管理',
+        'icon_class' => 'icon-home',
+        'link'       => '/admin/store',
+    ),
     //     'user'     => array(
     //         'title'      => '會員管理',
     //         'icon_class' => 'icon-home',
@@ -62,7 +51,7 @@ $config['menu'] = array(
         'icon_class' => 'icon-home',
         'link'       => '/admin/collection',
     ),
-    'product' => array(
+    'product'  => array(
         'title'      => '商品管理',
         'icon_class' => 'icon-home',
         'link'       => '/admin/product',
@@ -77,7 +66,7 @@ $config['menu'] = array(
     //         'icon_class' => 'icon-home',
     //         'link'       => '/admin/order',
     //     ),
-    'system'  => array(
+    'system'   => array(
         'title'      => '系統變數管理',
         'icon_class' => 'icon-home',
         'link'       => '/admin/systemvariable',
@@ -113,15 +102,26 @@ $config['lang'] = array(
 // admin狀態
 $config['admin_status'] = array(
     '2' => '停用',
-    '1' => '啟用',    
+    '1' => '啟用',
     '3' => '刪除',
 );
-// 一般狀態
+// 商品狀態
 $config['status'] = array(
     '1' => '上架',
     '2' => '下架',
     '3' => '暫時販售',
 );
+// 一般狀態
+$config['common_status'] = array(
+    '1' => '啟用',
+    '2' => '停用',
+);
+// 連結類型
+$config['link_types'] = array(
+    '_blank' => '另開新頁',
+    '_self'  => '目前頁面打開',
+);
+
 // 價格區間
 $config['price_rang'] = array(
     '1' => '1000以下',

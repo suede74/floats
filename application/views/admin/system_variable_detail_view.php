@@ -28,20 +28,41 @@
 								<div class="col-md-12">
 									<div class="control-label col-md-2">變數說明：</div>
 									<div class="col-md-10">
-										<p class="form-control-static"><?=(isset($variable['sv_title']))? $variable['sv_title'] : ''?></p>
+										<p class="form-control-static"><?=(isset($variable['sv_name']))? $variable['sv_name'] : ''?></p>
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="control-label col-md-2">值：</div>
-									<div class="col-md-10">
-										<div class="input-icon right">
-											<input type="text" placeholder="值" class="form-control" name="sv_value" value="<?=(isset($variable["sv_value"])? $variable["sv_value"] : "") ?>" />
+
+							<?php if (isset($variable['sv_type']) && $variable['sv_type'] == 'image') { ?>
+								<div class="form-group ">
+	                                <label class="control-label col-md-2">圖片：</label>
+	                                <div class="col-md-10">                                  
+	                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+	                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+	                                        	<?php if (isset($variable['sv_value']) && $variable['sv_value']) { ?>
+	                                                <img src="/public/upload/sv/<?=$variable['sv_value']?>" alt="" />
+	                                           	<?php } ?>
+	                                        </div>
+	                                        <div>
+	                                            <span class="btn btn-default btn-file"><span class="fileinput-new">選擇圖片</span><span class="fileinput-exists">更換圖片</span>
+	                                            <input type="file" name="sv_value"></span>
+	                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">移除圖片</a>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        <?php } else { ?>
+								<div class="form-group">
+									<div class="col-md-12">
+										<div class="control-label col-md-2">值：</div>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input type="text" placeholder="值" class="form-control" name="sv_value" value="<?=(isset($variable["sv_value"])? $variable["sv_value"] : "") ?>" />
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>							
+							<?php } ?>
 							
 						</div>
 						<div class="form-actions right">

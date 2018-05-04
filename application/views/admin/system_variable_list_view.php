@@ -71,7 +71,7 @@
                             <?php if (!empty($lists)): ?>
                                 <?php foreach ($lists as $list): ?>
                                 <tr>
-                                    <td class="highlight"><?=$list['sv_title']?></td>
+                                    <td class="highlight"><?=$list['sv_name']?></td>
                                     <td><?=$list['sv_value']?></td>                                                                     
                                     <td class="text-center">
                                         <a href="<?=base_url($folder.'/'.$ctl.'/detail/'.$list['sv_id'])?>" class="btn btn-outline btn-circle btn-sm blue">

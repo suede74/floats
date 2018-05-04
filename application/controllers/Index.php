@@ -21,11 +21,17 @@ class Index extends MY_Controller {
 	public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('index_slide_model');
     }
 
 	public function index()
 	{
 		$this->data['title'] = '關於我們';
+
+		$query = ['is_status' => 1];
+		$order_by = ['is_seq' => 'asc', 'is_id' => 'desc'];
+		$this->data['slides'] = $this->index_slide_model->getListByQuery($query, [0, 10], $order_by);
     	   
 		$this->render('index', $this->data, '', 'layout_view');
 	}
