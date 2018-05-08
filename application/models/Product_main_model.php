@@ -294,5 +294,22 @@ class Product_main_model extends MY_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+
+    public function search($query)
+    {
+        $this->db->select('pm_id, pm_name_tw, pm_name_en, pm_model_no');
+        $this->db->from($this->table);
+        
+        if (isset($query['q']) && $query['q']) {
+            $this->db->like('pm_name_tw', $query['q'], 'both');
+            $this->db->or_like('pm_model_no', $query['q'], 'both');
+        }
+        
+        $this->db->where('pm_status !=', 2);
+        
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
     
 }

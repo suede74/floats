@@ -88,5 +88,21 @@ class Collection_product_relaction_model extends MY_Model
     	
     	return $query->result_array();
     }
+
+    public function getTagsinputByCollection($c_id)
+    {
+        $this->db->select('product_main.pm_id as id, concat(product_main.pm_name_tw, " - ", product_main.pm_model_no) as text, "" as continent');
+            
+        $this->db->from($this->table);      
+
+        $this->db->where('collection_product_relaction.c_id', $c_id);
+        // $this->db->where('product_main.pm_status !=', 2);
+
+        $this->db->join('product_main', 'product_main.pm_id = collection_product_relaction.pm_id');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
     
 }

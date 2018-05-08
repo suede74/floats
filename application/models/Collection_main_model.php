@@ -1,6 +1,6 @@
 <?php
 
-class Collection_model extends MY_Model
+class Collection_main_model extends MY_Model
 {
     public function __construct()
     {
@@ -17,11 +17,8 @@ class Collection_model extends MY_Model
         $this->db->select("*")
             ->from($this->table);
 		        
-        if (isset($query['c_title']) && $query['c_title'] != ''){
-            $this->db->where('c_title', $query['c_title']);
-        }
-        if (isset($query['cm_id']) && $query['cm_id'] >= 0) {
-            $this->db->where('cm_id', $query['cm_id']);
+        if (isset($query['cm_title']) && $query['cm_title'] != ''){
+            $this->db->where('cm_title', $query['cm_title']);
         }
 	
         $num = $this->db->count_all_results();
@@ -40,11 +37,8 @@ class Collection_model extends MY_Model
         $this->db->select("*")
             ->from($this->table);		
 
-        if (isset($query['c_title']) && $query['c_title'] != ''){
-            $this->db->where('c_title', $query['c_title']);
-        }
-        if (isset($query['cm_id']) && $query['cm_id'] >= 0) {
-            $this->db->where('cm_id', $query['cm_id']);
+        if (isset($query['cm_title']) && $query['cm_title'] != ''){
+            $this->db->where('cm_title', $query['cm_title']);
         }
         
         $this->db->limit($limit[1], $limit[0]);

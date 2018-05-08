@@ -1,45 +1,16 @@
 var Collection = function() {
 
     var handleCollection = function() {
-//    	baseHref = '';
-//        var body = CKEDITOR.replace('n_body',
-//        {
-//            baseFloatZIndex:30000,
-//            filebrowserBrowseUrl : baseHref+'ckfinder/ckfinder.html',
-//            filebrowserImageBrowseUrl: baseHref+'ckfinder/ckfinder.html?type=Images',
-//            filebrowserFlashBrowseUrl : baseHref+'ckfinder/ckfinder.html?type=Flash',
-//            filebrowserUploadUrl : baseHref+'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-//            filebrowserImageUploadUrl : baseHref+'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-//            filebrowserFlashUploadUrl : baseHref+'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-//        });
-    	
         $('#data-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
             focusInvalid: false, // do not focus the last invalid input
             rules: {            	
-                c_title: {
-                    required: true
-                },               
-                // c_image: {
-                //     required: true
-                // },
-                c_status: {
-                	required: true,
-                	number: true
-                }
+                
             },
 
             messages: {
-                c_title: {
-                    required: '請輸入集合名稱'
-                },                
-                // c_image: {
-                //     required: '請選擇集合圖片'
-                // },                
-                c_status: {
-                	required: '請選擇狀態'             
-                }
+                
             },
 
             invalidHandler: function(event, validator) { //display error alert on form submit   
@@ -79,7 +50,7 @@ var Collection = function() {
                 // $('[name=n_body]').val(body.getData());
 
                 // var formData = new FormData($('form')[0]);
-                Common.fromSubmit("post", url, $('#data-form'), formCallback, null);
+                Common.fromSubmit('post', url, $('#data-form'), formCallback, null);
                
                 return false;
             }
@@ -92,7 +63,65 @@ var Collection = function() {
                 }
                 return false;
             }
-        });      
+        });
+
+        var elt = $('#pm_ids');
+        
+        elt.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+        });
+
+        $('[name=pm]').select2({
+            width: "off",
+            ajax: {
+                url: "/admin/product/ajax_search",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                processResults: function(data, page) {
+                    // parse the results into the format expected by Select2.
+                    // since we are using custom formatting functions we do not need to
+                    // alter the remote JSON data
+                    return {
+                        results: $.map(data.data, function (item) {
+                            return {
+                                text: (item.pm_name_tw + ' - ' + item.pm_model_no),
+                                id: item.pm_id,
+                            }
+                        })
+                    };
+                },
+                cache: true
+            },
+            escapeMarkup: function(markup) {
+                return markup;
+            }, // let our custom formatter work
+            minimumInputLength: 1,
+            // templateResult: formatState,
+        }).on('select2:select', function (e) {
+            var data = e.params.data;
+            elt.tagsinput('add', { 
+                "value": data.id, 
+                "text": data.text, 
+                // "continent": $('#object_tagsinput_continent').val()    
+            });
+        });
+
+        if ($('#select_pm').text()) {
+            var pm_datas = JSON.parse($('#select_pm').text());
+            for (i = 0; i < pm_datas.length; i++) {
+                elt.tagsinput('add', { 
+                    "value": pm_datas[i].id, 
+                    "text": pm_datas[i].text, 
+                });
+            }
+        }
     }
     
     return {
@@ -106,9 +135,13 @@ var Collection = function() {
 }();
 
 var formCallback = function(response) {
-        console.log(response);
+        // console.log(response);
+        url = '/admin/collection';
+        if (typeof(response.Url) != 'undefined' && response.Url) {
+            url = response.Url;
+        }
         if (response.Status) {
-            Common.showAlert(true, 'success', '成功', response.Message, "success", "/admin/collection");
+            Common.showAlert(true, 'success', '成功', response.Message, 'success', url);
         } else {
             $("#data-form-btn").removeAttr("disabled");
             Common.showAlert(true, 'error', '失敗', response.Message);

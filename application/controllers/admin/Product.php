@@ -492,6 +492,15 @@ class Product extends MY_Controller
         $this->ajax_output();
     }
 
+    public function ajax_search()
+    {
+        $get = $this->input->get();
+
+        $this->response['data'] = $this->product_main_model->search($get);
+
+        $this->ajax_output();
+    }
+
     private function removeFolder($basePath, $folder)
     {
         if (is_dir($basePath . '/' . $folder)) {

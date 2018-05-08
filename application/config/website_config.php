@@ -46,10 +46,10 @@ $config['menu'] = array(
     //         'icon_class' => 'icon-home',
     //         'link'       => '/admin/user',
     //     ),
-    'category' => array(
+    'collectionmain' => array(
         'title'      => '集合管理',
         'icon_class' => 'icon-home',
-        'link'       => '/admin/collection',
+        'link'       => '/admin/collectionmain',
     ),
     'product'  => array(
         'title'      => '商品管理',

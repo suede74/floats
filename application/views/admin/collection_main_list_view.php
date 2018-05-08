@@ -16,7 +16,7 @@
                     	
                         <label class="col-md-2 control-label">集合名稱</label>
                         <div class="col-md-2">
-                            <input type="text" name="c_title" class="form-control" placeholder="集合名稱">
+                            <input type="text" name="cm_title" class="form-control" placeholder="集合名稱">
                         </div>
 
                         <!-- <label class="col-md-2 control-label">商品型號</label>
@@ -39,7 +39,7 @@
     <div class="portlet light portlet-fit ">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-institution"></i>集合列表</div>
+                <i class="fa fa-institution"></i>主集合列表</div>
             <!-- <div class="tools">
                 <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
                 <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
@@ -47,8 +47,8 @@
                 <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
             </div> -->
             <div class="actions">
-                <a class="dt-button buttons-print btn dark btn-outline" tabindex="0" href="<?=base_url($folder.'/'.$ctl.'/add/'.$get['cm_id'])?>">
-                    <span>新增集合</span>
+                <a class="dt-button buttons-print btn dark btn-outline" tabindex="0" href="<?=base_url($folder.'/'.$ctl.'/add')?>">
+                    <span>新增主集合</span>
                 </a>
             </div>
         </div>
@@ -68,14 +68,14 @@
                             <?php if (!empty($lists)): ?>
                                 <?php foreach ($lists as $list): ?>
                                 <tr>
-                                    <td class="highlight"><?=$list['c_id']?></td>
-                                    <td><?=$list['c_title']?></td>
-                                    <td><?=(isset($status[$list['c_status']]))? $status[$list['c_status']] : ''?></td>
+                                    <td class="highlight"><?=$list['cm_id']?></td>
+                                    <td><?=$list['cm_title']?></td>
+                                    <td><?=(isset($status[$list['cm_status']]))? $status[$list['cm_status']] : ''?></td>
                                     <td class="text-center">
-                                        <a href="<?=base_url($folder.'/'.$ctl.'/detail/'.$get['cm_id'].'/'.$list['c_id'])?>" class="btn btn-outline btn-circle btn-sm blue">
+                                        <a href="<?=base_url($folder.'/'.$ctl.'/detail/'.$list['cm_id'])?>" class="btn btn-outline btn-circle btn-sm blue">
                                             <i class="fa fa-edit">查看/編輯</i></a>                                        
-                                        <!-- <a href="#" class="trash_data btn btn-outline btn-circle btn-sm red" data-id="<?=$list['n_id']?>">
-                                            <i class="fa fa-trash">刪除</i></a> -->                                        
+                                        <a href="<?=base_url('admin/collection/index/' . $list['cm_id'])?>" class="btn btn-outline btn-circle btn-sm green">
+                                            <i class="fa fa-edit">子集合管理</i></a>                                        
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>                           
